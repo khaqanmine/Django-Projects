@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>Grocery</title>
+    </head>
+    <body>   
+        <center><h1>Grocery Bill</h1></center>
+        <div class = 'row'>
+            <div class="col-12">
+                <form method="post">
+                    {% csrf_token %}
+                    {{gb}}
+                    <br/>
+                    <br/>
+                    <button type='submit'>Calulate</button>
+                    <br/>
+                    <label>Total Bill</label>
+                    <input type='text' value='{{output}}' name='total_bill'/>
+                </form>
+            </div>
+        </div>    
+    </body>
+</html>

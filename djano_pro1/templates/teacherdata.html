@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>Teacher Data</title>
+    </head>
+    <body>   
+        <center><h1>Teacher Details</h1></center>
+        <div class='row'>
+            <div class='col-12'>
+              <center><form method='post' action = '{% url 'teacherdata' %}'>
+                    {% csrf_token %}
+                    <h4><label>Name:</label><br/></h4>
+                    <input type='text' name='name' placehoder='Your name' class="form-control"/><br/>
+                    <h4> <label>Phone Number:</label><br/></h4>
+                    <input type='text' name='phone' placehoder='+92 3317129203' class="form-control"/><br/>
+                    <h4><label>Address:</label><br/></h4>
+                    <input type='text' name='address' placehoder='Your address' class="form-control"/><br/>
+                    <h4><label>Salary:</label><br/></h4>
+                    <input type='text' name='salary' placehoder='Your salary' class="form-control"/><br/><br/>
+                    <button type='submit'>Submit</button>
+                </form></center>    
+            </div>
+        </div>    
+    </body>
+</html>

@@ -1,0 +1,21 @@
+<html>
+    <head>
+    <title>Student Data</title>
+    </head>
+    <body>
+        <center><h1>Student Information</h1></center>
+        <center>
+            <div class='row'>
+                <div class= 'col-12'>
+                    <form method='post' action = '{% url 'studata' %}'>
+                        {% csrf_token %}
+                        {{stu_form}}
+                        </br>
+                        </br>
+                        <button type='submit'>Save</button>
+                    </form>
+                </div>
+            </div>
+        </center>            
+    </body>
+</html>

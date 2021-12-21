@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title>EvenOdd</title>
+    </head>
+    <body>   
+        <center><h1>Check Number is Odd or Even</h1></center>
+        <div class = 'row'>
+            <div class="col-12">
+                <form method="post">
+                    {% csrf_token %}
+                    {{classform}}
+                    <br/>
+                    <button type='submit'>Check</button>
+                    <br/>
+                    <input type='text' value='{{result}}'/>
+                </form>
+            </div>
+        </div>    
+    </body>
+</html>

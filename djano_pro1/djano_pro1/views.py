@@ -6,11 +6,14 @@ from .forms import checkEvenOdd
 from .forms import StudentData
 from studentinfo.models import StudentInfo
 from teacherdata.models import TeacherData
+from django.http import JsonResponse
+import json
+from django.views import View
 def startdevelopment(request):
     return render(request,'1stapp.html')
 
 def homepage(request):
-    return render(request,'index.html')
+    return render(request, 'index.html')
 
 def aboutus(request):
     return HttpResponse('Welcome')
@@ -98,3 +101,18 @@ def studentData(request):
         print('Error Occurred Please Check')
         
     return render(request, 'studentdata.html', data)
+
+def jasondata(request): # Return Json Data
+    data = list(TeacherData.objects.values())
+    return JsonResponse(data, safe=False)
+
+def Urlwithparameters(request,year): #URL with Parameters
+    return HttpResponse(year)
+
+class firstClassbaseView(View):  # Class based views                             
+    def classBasedview(self, request):
+        a = 3+5
+        return HttpResponse(a)
+        
+
+    

@@ -16,10 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from djano_pro1 import views
+from djano_pro1.views import firstClassbaseView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.homepage),
+    path('homepage/',views.homepage),
     path('about-us/',views.aboutus),
     path('calculater/',views.calculater),
     path('grocery-bill/',views.grocery),
@@ -27,4 +28,7 @@ urlpatterns = [
     path('school-management/',views.startdevelopment),
     path('teacherdata/',views.teacherdata, name='teacherdata'),
     path('student_data/',views.studentData, name='studata'),
+    path('jsondata/',views.jasondata),
+    path('homepage/<int:year>', views.Urlwithparameters),
+    path('classview/', firstClassbaseView.as_view()),
 ]

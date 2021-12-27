@@ -14,6 +14,11 @@ class StudentData(forms.Form):
     student_gender = forms.CharField(label='Student Gender', required=True)
     student_fathername = forms.CharField(label='Student FatherName', required=True)
 
+class ContactForm(forms.Form):
+    name = forms.CharField(max_length=50)
+    email = forms.EmailField(max_length=50)
+    phone = forms.IntegerField()
+
 # class teacherd(forms.Form):
 #     name = forms.CharField(label='Teacher Name', required=True)
 #     phone = forms.CharField(label='Teacher Phone', required=True)

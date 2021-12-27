@@ -16,7 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from djano_pro1 import views
-from djano_pro1.views import firstClassbaseView
+from djano_pro1.views import FirstClassBaseView
+from djano_pro1.views import GreetingView
+from djano_pro1.views import ReturnJsonData
+from djano_pro1.views import ReturnJsonDataChild
+from djano_pro1.views import Calculaterclass
+from djano_pro1.views import ContactFormView
+from djano_pro1.views import ClassView
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,6 +37,20 @@ urlpatterns = [
     path('teacherdata/',views.teacherdata, name='teacherdata'),
     path('student_data/',views.studentData, name='studata'),
     path('jsondata/',views.jasondata),
-    path('homepage/<int:year>', views.Urlwithparameters),
-    path('classview/', firstClassbaseView.as_view()),
+    path('classview/', FirstClassBaseView.as_view()),
+    path('inturl/<int:parameter>',views.JasonDataInt),
+    path('strurl/<str:parameter>',views.JasonDataStr),
+    path('slugurl/<slug:parameter>',views.JasonDataSlug),
+    path('url/<parameter>',views.JasonData),
+    path('class-view-var/', GreetingView.as_view(greeting='Hello khaqqan what are you doing')),
+    path('classview-return-json/',ReturnJsonData.as_view()),
+    path('classchildview-return-json/',ReturnJsonDataChild.as_view(), name='chilview'),
+    path('calculater-class-view/',Calculaterclass.as_view(), name='calculater-class-view'),
+    path('contactform/', views.contact_form, name='contactform'),
+    path('contactform-class-view/',ContactFormView.as_view(), name='contactform-class-view'),
+    path('fucntion-view/', views.functionview,{'template':'test.html'}, name='function-view'),
+    path('fucntion-view2/', views.functionview, {'template':'test2.html'}, name='function-view'),
+    path('class-view/', ClassView.as_view(template='test.html'), name='class-view'),
+    path('class-view2/', ClassView.as_view(template='test2.html'), name='class-view2'),
+
 ]

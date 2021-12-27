@@ -3,7 +3,9 @@ from django.shortcuts import render
 # from .forms import calculaterForm
 from .forms import groceryBill
 from .forms import checkEvenOdd
+from .forms import ContactForm
 from .forms import StudentData
+from contactform.models import ContactFormModel
 from studentinfo.models import StudentInfo
 from teacherdata.models import TeacherData
 from django.http import JsonResponse
@@ -106,13 +108,70 @@ def jasondata(request): # Return Json Data
     data = list(TeacherData.objects.values())
     return JsonResponse(data, safe=False)
 
-def Urlwithparameters(request,year): #URL with Parameters
-    return HttpResponse(year)
-
-class firstClassbaseView(View):  # Class based views                             
-    def classBasedview(self, request):
-        a = 3+5
+class FirstClassBaseView(View):  # Class based views    
+    def get(self, request):
+        a = 'Class Based View'
         return HttpResponse(a)
-        
 
-    
+def JasonDataInt(request,parameter): 
+    return HttpResponse(parameter)
+
+def JasonDataStr(request, parameter):
+    return HttpResponse(parameter)
+
+def JasonDataSlug(request, parameter):
+    return HttpResponse(parameter)
+
+def JasonData(request, parameter):
+    return HttpResponse(parameter)
+
+class GreetingView(View):
+    greeting = ""
+    def get(self, request):
+        return HttpResponse(self.greeting)
+
+class ReturnJsonData(View):
+    name='Khaaqan'
+    def get(self, request):
+        data = list(TeacherData.objects.values())
+        return JsonResponse(data, safe=False)
+
+class ReturnJsonDataChild(ReturnJsonData):
+    def get(self, request):
+        return HttpResponse(self.name)
+
+class Calculaterclass(View):
+    def get(self, request):
+        return render(request, 'calculater.html')
+
+def contact_form(request):
+    data = {'form': ContactForm()}
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        return HttpResponse('Form Successfully Submitted')
+    else:
+        data = {'form': ContactForm()}
+    return render(request, 'contactform.html', data)
+
+class ContactFormView(View):
+    def get(self, request):
+        form = ContactForm()
+        return render(request, 'contactform.html', {'form':form})
+    def post(self, request):
+         if request.method == 'POST':
+            name = request.POST.get('name')
+            email = request.POST.get('email')
+            phone = request.POST.get('phone')
+            instances = ContactFormModel(name=name, phone=phone, email=email)
+            instances.save()
+            return HttpResponse('Form Successfully Submitted')
+
+def functionview(request, template):
+    return render(request,template)
+
+class ClassView(View):
+    template=''
+    def get(self,request):
+        return render(request, self.template)

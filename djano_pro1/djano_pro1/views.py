@@ -11,6 +11,8 @@ from teacherdata.models import TeacherData
 from django.http import JsonResponse
 import json
 from django.views import View
+from django.views.generic.list import ListView
+from employee_data.models import EmployeeData
 def startdevelopment(request):
     return render(request,'1stapp.html')
 
@@ -175,3 +177,13 @@ class ClassView(View):
     template=''
     def get(self,request):
         return render(request, self.template)
+#ListView
+class EmpDataListView(ListView):
+    model = EmployeeData
+#SimpleView
+class EmployeeInfo(View):
+    
+    def get(self, request):
+        data =  list(EmployeeData.objects.values())
+        return HttpResponse(data, request)
+    

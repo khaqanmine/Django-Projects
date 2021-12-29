@@ -23,6 +23,9 @@ from djano_pro1.views import ReturnJsonDataChild
 from djano_pro1.views import Calculaterclass
 from djano_pro1.views import ContactFormView
 from djano_pro1.views import ClassView
+from djano_pro1.views import EmpDataListView
+from djano_pro1.views import EmployeeInfo
+
 
 
 
@@ -52,5 +55,6 @@ urlpatterns = [
     path('fucntion-view2/', views.functionview, {'template':'test2.html'}, name='function-view'),
     path('class-view/', ClassView.as_view(template='test.html'), name='class-view'),
     path('class-view2/', ClassView.as_view(template='test2.html'), name='class-view2'),
-
+    path('class-listview/', EmpDataListView.as_view(), name='class-listview'),
+    path('classview-return-http/',EmployeeInfo.as_view(), name='classview'),
 ]

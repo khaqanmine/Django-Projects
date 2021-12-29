@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'teacherdata',
     'studentinfo',
     'contactform',
+    'employee_data',
 ]
 
 MIDDLEWARE = [

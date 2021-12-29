@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <title>Employee</title>
+    </head>
+    <body>   
+        <center><h1>Employee Data</h1></center>
+        {% for data in employeedata_list %}
+        {{data.emp_name}}
+        {{data.emp_salary}}
+        {{data.emp_id}}</br>
+        {% endfor %}
+
+    </body>
+</html>
